@@ -69,6 +69,31 @@ mern-testing/
 - Cypress/Playwright: End-to-end testing framework
 - MongoDB Memory Server: In-memory MongoDB for testing
 
+## Testing Strategy
+
+This project uses a comprehensive testing approach for both client and server:
+
+### Client
+- **Unit Tests:** Written with Jest and React Testing Library for components and utilities.
+- **Integration Tests:** (Add in `src/tests/integration/` as needed) for component-API interaction.
+- **E2E Tests:** Cypress tests for critical user flows (see `client/cypress/e2e/`).
+
+### Server
+- **Unit Tests:** Jest for utilities and middleware.
+- **Integration Tests:** Supertest for API endpoints and error handling.
+- **Test Database:** Use of `mongodb-memory-server` for isolated DB tests.
+
+### Coverage
+- Run `npm test` in client or server for coverage reports. Aim for 70%+ coverage.
+
+## Debugging Techniques
+- **Client:** Error boundaries in React (`ErrorBoundary.jsx`).
+- **Server:** Logging middleware and global error handler in Express.
+- **General:** Use browser dev tools and `console.log`/`console.error` for troubleshooting.
+
+## Screenshots
+- Add screenshots of coverage reports here after running tests.
+
 ## Submission
 
 Your work will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
