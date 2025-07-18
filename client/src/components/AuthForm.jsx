@@ -33,7 +33,7 @@ export default function AuthForm() {
   return (
     <div>
       <h2>{isLogin ? 'Login' : 'Register'}</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 8 }}>
         {!isLogin && (
           <input
             name="name"
@@ -41,6 +41,8 @@ export default function AuthForm() {
             value={form.name}
             onChange={handleChange}
             required
+            type="text"
+            style={{ flex: 1 }}
           />
         )}
         <input
@@ -49,6 +51,8 @@ export default function AuthForm() {
           value={form.email}
           onChange={handleChange}
           required
+          type="email"
+          style={{ flex: 1 }}
         />
         <input
           name="password"
@@ -57,15 +61,21 @@ export default function AuthForm() {
           value={form.password}
           onChange={handleChange}
           required
+          style={{ flex: 1 }}
         />
-        <button type="submit" disabled={status === 'loading'}>
+        <button type="submit" disabled={status === 'loading'} style={{ whiteSpace: 'nowrap' }}>
           {isLogin ? 'Login' : 'Register'}
         </button>
       </form>
-      <button onClick={() => setIsLogin((v) => !v)}>
+      <button type="button" onClick={() => setIsLogin((v) => !v)} style={{ marginBottom: 8 }}>
         {isLogin ? 'Need an account? Register' : 'Already have an account? Login'}
       </button>
-      {status === 'failed' && <p style={{ color: 'red' }}>{error}</p>}
+      {status === 'failed' && (
+        <p style={{ color: 'red', margin: 0 }}>
+          {isLogin ? 'Login failed' : 'Registration failed'}
+          {error && error !== 'Rejected' && `: ${error}`}
+        </p>
+      )}
     </div>
   );
 } 

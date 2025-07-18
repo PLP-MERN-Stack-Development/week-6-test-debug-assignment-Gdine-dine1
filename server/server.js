@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const app = require('./src/app');
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 const MONGO_URL = process.env.MONGO_URL || 'mongodb://localhost:27017/testdb';
 
 mongoose.connect(MONGO_URL, {
